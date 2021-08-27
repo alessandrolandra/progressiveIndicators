@@ -10,4 +10,4 @@ Arduino code to handle the inputs and trigger the related strip animation (using
 
 # Demo
 Here, a little video is available, to understand the behavior.
-![Demo](schematic/demo.mp4)
+![Demo](video/demo.mp4)
