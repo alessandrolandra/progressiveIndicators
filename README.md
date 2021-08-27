@@ -2,12 +2,15 @@
 Additional progressive turn indicators for motorbikes and cars.
 
 ## System
-Digispark microcontroller connected to the two turn signals coming from the vehicle (through nmos transistors) and to two addressable LED strips.
+Digispark microcontroller connected to the two turn signals coming from the vehicle (through nmos transistors) and to two addressable LED strips.\
 ![Schematic](schematic/spice_schematic.jpg)
+(-), (+) and (Di) refer to the two LED strips; right and left INDICATOR labels come from the vehicle and all the other labels are Digispark's pins.
+In the picture below there is an overview of the circuit; it is still under development (you can see additional transitor and resistances), the goal is to get a PCB and make it waterproof using epoxy.
+![Overview](system/circuit.jpg)
 
 ## Code
 Arduino code to handle the inputs and trigger the related strip animation (using Adafruit_NeoPixel simple library).
 
 # Demo
 Here, a little video is available, to understand the behavior.
-![Demo](video/demo.gif)
+![Demo](system/demo.gif)
