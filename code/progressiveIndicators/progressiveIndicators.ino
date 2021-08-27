@@ -1,10 +1,11 @@
 #include <Adafruit_NeoPixel.h>
 
-#define LED_PIN_R   1
-#define LED_PIN_L   3
-#define TURN_RIGHT  2
-#define TURN_LEFT   4
-#define NUM_LEDS    17
+#define LED_PIN_R       1
+#define LED_PIN_L       3
+#define TURN_RIGHT      2
+#define TURN_LEFT       4
+#define NUM_LEDS        17
+#define MATRIX_LENGTH   21
 
 uint8_t matrix[] = {1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
@@ -28,7 +29,7 @@ void setup() {
 
 void loop()
 {
-    static int off,cnt_l=NUM_LEDS+4,cnt_r=NUM_LEDS+4;
+    static int off,cnt_l=MATRIX_LENGTH,cnt_r=MATRIX_LENGTH;
     
     if(!digitalRead(TURN_LEFT) && cnt_l>10){  
           off=3;
@@ -40,9 +41,9 @@ void loop()
           cnt_r=0;
           emptyStrips();
     }
-    if(cnt_l<NUM_LEDS+4){
+    if(cnt_l<MATRIX_LENGTH){
         for(int i=0;i<NUM_LEDS;i++){
-            if(matrix[(off+i)%21]){
+            if(matrix[(off+i)%MATRIX_LENGTH]){
                 strip_l.setPixelColor(i, strip_l.Color(40,255,0));
             }else{
                 strip_l.setPixelColor(i, strip_l.Color(0,0,0));
@@ -51,11 +52,11 @@ void loop()
         strip_l.show();
         off--;
         if(off<0)
-          off+=21;
+          off+=MATRIX_LENGTH;
         cnt_l++;
-    }else if(cnt_r<NUM_LEDS+4){
+    }else if(cnt_r<MATRIX_LENGTH){
         for(int i=0;i<NUM_LEDS;i++){
-            if(matrix[(off+i)%21]){
+            if(matrix[(off+i)%MATRIX_LENGTH]){
                 strip_r.setPixelColor(i, strip_r.Color(40,255,0));
             }else{
                 strip_r.setPixelColor(i, strip_r.Color(0,0,0));
@@ -64,7 +65,7 @@ void loop()
         strip_r.show();
         off--;
         if(off<0)
-          off+=21;
+          off+=MATRIX_LENGTH;
         cnt_r++;       
     }    
     delay(40);
